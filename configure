@@ -1,0 +1,13 @@
+#!/bin/sh
+LIBS="gtk+-2.0 glib-2.0 gconf-2.0 hildon-1 hildon-input-method-ui-3.0 hildon-input-method-framework-3.0"
+echo Looking for $LIBS 
+if pkg-config --print-errors $LIBS; then
+
+	echo LIBS = $LIBS > Makefile
+	cat Makefile.in >> Makefile
+
+	echo "Found: Run make to build"
+else
+	echo Missing libraries
+	exit 1
+fi

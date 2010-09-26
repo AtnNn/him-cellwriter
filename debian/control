@@ -1,0 +1,13 @@
+Source: him-cellwriter
+Priority: extra
+Maintainer: Etienne Laurin <etienne@atnnn.com>
+Build-Depends: debhelper (>= 5), gcc, libhildon-im-ui-dev, libhildon1-dev, libosso-dev
+Standards-Version: 3.7.2
+Section: user/system
+
+Package: him-cellwriter
+Section: user/system
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: CellWriter Input Plugin
+	Handwriting recognition

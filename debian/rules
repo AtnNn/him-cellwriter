@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+config.status: configure
+	./configure
+
+build:
+	$(MAKE)
+
+clean: 
+	$(MAKE) clean
+
+install: build
+	rm -rf debian/him-cellwriter/* || true
+	$(MAKE) prefix=$(CURDIR)/debian/him-cellwriter/usr install
+
+
+binary: build install
+	dh_testdir
+	dh_testroot
+#	dh_install
+	dh_strip
+	dh_fixperms
+	dh_makeshlibs
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+.PHONY: build clean binary install 
